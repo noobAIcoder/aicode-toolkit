@@ -1,0 +1,35 @@
+{
+  "id": "workflow-simple-off_task-0001",
+  "version": "0.1.0",
+  "category": "workflows",
+  "class": "simple",
+  "subclass": "off_task",
+  "description": "Workflow for small off-task clarifications",
+  "placeholders": {
+    "task_id": "TASK-0000"
+  },
+  "steps": [
+    {
+      "name": "Assess operator request",
+      "kind": "plan",
+      "input_templates": [
+        ".pipeline-x/templates/AGENTS.md"
+      ],
+      "output_templates": [
+        ".pipeline-x/plans/assessment-{task_id}.md"
+      ],
+      "halt_after": true
+    },
+    {
+      "name": "Provide response",
+      "kind": "execute",
+      "input_templates": [
+        ".pipeline-x/plans/assessment-{task_id}.md"
+      ],
+      "output_templates": [
+        ".pipeline-x/reports/offtask-{task_id}.json"
+      ],
+      "halt_after": false
+    }
+  ]
+}

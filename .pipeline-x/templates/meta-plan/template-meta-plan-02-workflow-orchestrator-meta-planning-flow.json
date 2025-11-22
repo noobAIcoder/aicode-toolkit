@@ -1,0 +1,27 @@
+{
+  "name": "Workflow Orchestrator meta-plan Template",
+  "description": "Guides meta-plan for this repository: decide what needs planning, which templates apply, and which artifacts to create before execution.",
+  "version": "0.1.0",
+  "category": "meta-plan",
+  "placeholders": {
+    "id": "02",
+    "slug": "workflow-orchestrator-meta-plan-flow",
+    "title": "meta-plan: <Your Title Here>",
+    "owner": "Operator",
+    "job_id": "JOB-0000"
+  },
+  "steps": [
+    "Summarize the operator request and confirm scope, non-goals, and constraints in meta-plan: <Your Title Here>.",
+    "Identify which workflow folders (plans/, reports/, scripts/, states/) the work WILL touch and record rationale.",
+    "Select all relevant ingestion, planning, processing, output, verify, and meta-plan templates from .pipeline-x/templates/processing/template-processing-7b-allowed-template-registry-catalog-v1.json.",
+    "Enumerate key risks, guardrails, and environment constraints (Windows + WSL, no-source-code unless explicitly requested).",
+    "Define the concrete planning artifacts to create (plan markdown, state entries, reports) and their naming patterns.",
+    "Specify acceptance checks for the downstream plan and record where operator approval MUST be captured before execution."
+  ],
+  "acceptance": [
+    "A meta-plan markdown file MUST exist under plans/plan-{2-byte-id}-{very-nice-five-word-slug}.md with sections for Context, Scope, Non-goals, Constraints, Risks, and Next Steps.",
+    "The meta-plan MUST list selected templates by id and path from .pipeline-x/templates/processing/template-processing-7b-allowed-template-registry-catalog-v1.json.",
+    "Planned artifacts and naming patterns MUST be documented so the next planning phase can proceed deterministically.",
+    "Operator approval status for the meta-plan MUST be recorded before any execution work that depends on the plan starts."
+  ]
+}

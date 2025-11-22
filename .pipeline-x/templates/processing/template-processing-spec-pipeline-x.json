@@ -1,0 +1,34 @@
+{
+  "name": "SPEC / PROCESS Workflow Template",
+  "description": "Elaborates structural plans into concrete specifications and interfaces.",
+  "version": "0.1.0",
+  "category": "processing",
+  "stage": "SPEC",
+  "subflow": "PROCESS",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "spec_path": "specs/drafts/<job_id>-spec-process.md",
+    "registry_path": "specs/registry/<job_id>-interfaces.json"
+  },
+  "inputs": [
+    "job.stage MUST equal SPEC and job.subflow MUST equal PROCESS.",
+    "Guards MUST stay TRUE; lock MUST be active; job.status MUST be working; job.halted MUST be FALSE.",
+    "SPEC ingress notes MUST be available plus any upstream governance constraints or operator clarifications.",
+    "structure_plan_ok MUST stay TRUE or PROCESS MUST HALT."
+  ],
+  "steps": [
+    "Break down ingress assumptions into modules/components and record them in spec_path.",
+    "Document PlusCal-style pseudocode expectations for each logical block as inline comments when required (no other pseudocode formats permitted).",
+    "Capture interface contracts, data requirements, and verification checkpoints inside registry_path.",
+    "Review draft with operator for completeness, capturing approvals or change requests inline."
+  ],
+  "outputs": [
+    "spec_path containing structured sections (overview, logic, data, risks).",
+    "registry_path capturing interface entries tied to module identifiers."
+  ],
+  "acceptance": [
+    "Every ingress assumption MUST map to at least one specification section.",
+    "Interfaces MUST identify consumers/producers and validation hooks.",
+    "Operator MUST sign off on the elaboration or explicitly defer items with owners/dates."
+  ]
+}

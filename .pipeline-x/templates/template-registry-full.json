@@ -1,0 +1,424 @@
+{
+  "name": "Pipeline X Template Registry (full)",
+  "description": "Detailed registry listing all templates permitted for this repository; used by workflow-driven registry maintenance.",
+  "version": "0.3.0",
+  "category": "processing",
+  "placeholders": {
+    "registry_id": "REG-<two-letters-or-hex>",
+    "owner": "Operator",
+    "templates_root": ".pipeline-x/templates/",
+    "notes": "Optional operator notes"
+  },
+  "registry": {
+    "id": "REG-7b-full",
+    "title": "Pipeline X Templates (full)",
+    "schema": "pipeline-x.registry.templates/1.0",
+    "templates_root": ".pipeline-x/templates/",
+    "generated_at": "2025-11-21T19:54:25+00:00",
+    "usage": "Use this file for registry audit/maintenance workflows. AGENTS.md documents MUST NOT reference this file; they should point to the short registry instead.",
+    "allowed_templates": [
+      {
+        "name": "Templates AGENTS Guidance",
+        "category": "guidance",
+        "path": ".pipeline-x/templates/AGENTS.md",
+        "version": "0.1.0",
+        "description": "Folder-level instructions for template naming and registry alignment.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "guidance"
+        ],
+        "id": "TPL-0001"
+      },
+      {
+        "name": "Workflows AGENTS Guidance",
+        "category": "guidance",
+        "path": ".pipeline-x/templates/workflows/AGENTS.md",
+        "version": "0.1.0",
+        "description": "Workflow template tracking guidance.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "guidance"
+        ],
+        "id": "TPL-0002"
+      },
+      {
+        "name": "Template Creation Workflow",
+        "category": "workflows",
+        "path": ".pipeline-x/templates/workflows/template-creation-workflow.md",
+        "version": "0.1.0",
+        "description": "Steps to craft and review new templates.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "workflows"
+        ],
+        "id": "TPL-0003"
+      },
+      {
+        "name": "Template Registry Check and Populate Workflow",
+        "category": "workflows",
+        "path": ".pipeline-x/templates/workflows/template-registry-check-and-populate.md",
+        "version": "0.1.0",
+        "description": "Procedure to inventory templates and update the registry catalog.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "workflows"
+        ],
+        "id": "TPL-0004"
+      },
+      {
+        "name": "Template Creation Workflow (Planning Draft)",
+        "category": "planning",
+        "path": ".pipeline-x/templates/high-plan/template-high-plan-01-template-creation-workflow.json",
+        "version": "0.1.0",
+        "description": "Minimal template to capture a repeatable plan for creating and validating templates.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "planning"
+        ],
+        "id": "TPL-0005"
+      },
+      {
+        "name": "Template Review Workflow (Planning)",
+        "category": "planning",
+        "path": ".pipeline-x/templates/high-plan/template-high-plan-02-template-review-workflow.json",
+        "version": "0.1.0",
+        "description": "High-level plan structure for auditing templates, deduplicating, fixing them, and aligning the registry.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "planning"
+        ],
+        "id": "TPL-0006"
+      },
+      {
+        "name": "DELIVER / INGEST Workflow Template",
+        "category": "ingestion",
+        "path": ".pipeline-x/templates/ingestion/template-ingestion-deliver-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Admits DELIVER work only when specifications and readiness gates are confirmed.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "ingestion"
+        ],
+        "id": "TPL-0007"
+      },
+      {
+        "name": "PLAN / INGEST Workflow Template",
+        "category": "ingestion",
+        "path": ".pipeline-x/templates/ingestion/template-ingestion-plan-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Guides PLAN stage ingress work: validate scope, guards, and readiness before moving to PROCESS.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "ingestion"
+        ],
+        "id": "TPL-0008"
+      },
+      {
+        "name": "SPEC / INGEST Workflow Template",
+        "category": "ingestion",
+        "path": ".pipeline-x/templates/ingestion/template-ingestion-spec-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Ensures SPEC stage begins only when structural plan inputs are ready and guards hold.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "ingestion"
+        ],
+        "id": "TPL-0009"
+      },
+      {
+        "name": "Machine State Template for agent_state.json",
+        "category": "machine-state",
+        "path": ".pipeline-x/templates/machine-state/template-machine-state-7c4c-agent-state-halting-status-record.json",
+        "version": "0.1.0",
+        "description": "Defines the minimal, structured shape for REPO_ROOT/.pipeline-x/states/agent_state.json so HALT updates and approvals are recorded consistently.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "machine-state"
+        ],
+        "id": "TPL-0010"
+      },
+      {
+        "name": "Template Review meta-plan",
+        "category": "meta-plan",
+        "path": ".pipeline-x/templates/meta-plan/template-meta-plan-01-template-review-workflow.json",
+        "version": "0.1.0",
+        "description": "Minimal meta-plan structure for reviewing templates and registry alignment.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "meta-plan"
+        ],
+        "id": "TPL-0011"
+      },
+      {
+        "name": "Workflow Orchestrator meta-plan Template",
+        "category": "meta-plan",
+        "path": ".pipeline-x/templates/meta-plan/template-meta-plan-02-workflow-orchestrator-meta-planning-flow.json",
+        "version": "0.1.0",
+        "description": "Guides meta-plan for this repository: decide what needs planning, which templates apply, and which artifacts to create before execution.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "meta-plan"
+        ],
+        "id": "TPL-0012"
+      },
+      {
+        "name": "DELIVER / OUT Workflow Template",
+        "category": "output",
+        "path": ".pipeline-x/templates/output/template-output-deliver-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Packages tested deliverables and supporting evidence for VERIFY and release approvals.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "output"
+        ],
+        "id": "TPL-0013"
+      },
+      {
+        "name": "PLAN / OUT Workflow Template",
+        "category": "output",
+        "path": ".pipeline-x/templates/output/template-output-plan-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Packages PLAN PROCESS results into verification-ready artifacts before VERIFY begins.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "output"
+        ],
+        "id": "TPL-0014"
+      },
+      {
+        "name": "SPEC / OUT Workflow Template",
+        "category": "output",
+        "path": ".pipeline-x/templates/output/template-output-spec-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Packages SPEC deliverables so VERIFY can audit and prep for DELIVER stage.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "output"
+        ],
+        "id": "TPL-0015"
+      },
+      {
+        "name": "Pipeline X Template Registry (full)",
+        "category": "processing",
+        "path": ".pipeline-x/templates/template-registry-full.json",
+        "version": "0.3.0",
+        "description": "Detailed registry listing all templates permitted; used by maintenance workflows.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "processing"
+        ],
+        "id": "TPL-0016"
+      },
+      {
+        "name": "Pipeline X Template Metadata Schema",
+        "category": "processing",
+        "path": ".pipeline-x/templates/processing/template-processing-7b-template-metadata-schema-v1.json",
+        "version": "1.0.0",
+        "description": "Canonical schema for JSON templates stored under .pipeline-x/templates/.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "processing"
+        ],
+        "id": "TPL-0017"
+      },
+      {
+        "name": "DELIVER / PROCESS Workflow Template",
+        "category": "processing",
+        "path": ".pipeline-x/templates/processing/template-processing-deliver-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Executes delivery work, runs tests, and sets tests_pass TRUE when criteria are met.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "processing"
+        ],
+        "id": "TPL-0018"
+      },
+      {
+        "name": "PLAN / PROCESS Workflow Template",
+        "category": "processing",
+        "path": ".pipeline-x/templates/processing/template-processing-plan-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Creates the minimal actionable todo backlog for PLAN stage once ingress gates pass.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "processing"
+        ],
+        "id": "TPL-0019"
+      },
+      {
+        "name": "SPEC / PROCESS Workflow Template",
+        "category": "processing",
+        "path": ".pipeline-x/templates/processing/template-processing-spec-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Elaborates structural plans into concrete specifications and interfaces.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "processing"
+        ],
+        "id": "TPL-0020"
+      },
+      {
+        "name": "DELIVER / VERIFY Workflow Template",
+        "category": "verify",
+        "path": ".pipeline-x/templates/verification/template-verify-deliver-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Confirms all DELIVER gates (tests, plan approval, release approval) before advancing to DONE.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "verify"
+        ],
+        "id": "TPL-0021"
+      },
+      {
+        "name": "PLAN / VERIFY Workflow Template",
+        "category": "verify",
+        "path": ".pipeline-x/templates/verification/template-verify-plan-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Closes PLAN stage by validating backlog completion and preparing SPEC handoff.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "verify"
+        ],
+        "id": "TPL-0022"
+      },
+      {
+        "name": "SPEC / VERIFY Workflow Template",
+        "category": "verify",
+        "path": ".pipeline-x/templates/verification/template-verify-spec-pipeline-x.json",
+        "version": "0.1.0",
+        "description": "Confirms SPEC completeness, secures approvals, and prepares DELIVER handoff.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "verify"
+        ],
+        "id": "TPL-0023"
+      },
+      {
+        "name": "workflow-complicated-build_app-0001",
+        "category": "workflows",
+        "path": ".pipeline-x/templates/workflows/workflow-complicated-build_app-0001.json",
+        "version": "0.1.0",
+        "description": "Workflow for heavier build app tasks",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "workflows"
+        ],
+        "id": "TPL-0024"
+      },
+      {
+        "name": "workflow-complicated-off_task-0001",
+        "category": "workflows",
+        "path": ".pipeline-x/templates/workflows/workflow-complicated-off_task-0001.json",
+        "version": "0.1.0",
+        "description": "Workflow for tricky off-task escalations",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "workflows"
+        ],
+        "id": "TPL-0025"
+      },
+      {
+        "name": "workflow-simple-build_app-0001",
+        "category": "workflows",
+        "path": ".pipeline-x/templates/workflows/workflow-simple-build_app-0001.json",
+        "version": "0.1.0",
+        "description": "Minimal workflow for simple build app tasks",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "workflows"
+        ],
+        "id": "TPL-0026"
+      },
+      {
+        "name": "workflow-simple-off_task-0001",
+        "category": "workflows",
+        "path": ".pipeline-x/templates/workflows/workflow-simple-off_task-0001.json",
+        "version": "0.1.0",
+        "description": "Workflow for small off-task clarifications",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "workflows"
+        ],
+        "id": "TPL-0027"
+      },
+      {
+        "name": "Pipeline X Template Registry (short)",
+        "category": "processing",
+        "path": ".pipeline-x/templates/template-registry.json",
+        "version": "0.3.0",
+        "description": "Succinct registry for agent ingestion; see long registry for detailed metadata.",
+        "enabled": true,
+        "owner": "Operator",
+        "tags": [
+          "processing"
+        ],
+        "id": "TPL-0028"
+      }
+    ],
+    "entry_schema": {
+      "required": [
+        "id",
+        "name",
+        "category",
+        "path",
+        "version",
+        "enabled"
+      ],
+      "optional": [
+        "tags",
+        "owner",
+        "description"
+      ],
+      "category_values": [
+        "guidance",
+        "ingestion",
+        "machine-state",
+        "meta-plan",
+        "output",
+        "planning",
+        "processing",
+        "verify",
+        "workflows"
+      ]
+    }
+  },
+  "acceptance": [
+    "JSON parses with registry id/title and generated_at refreshed.",
+    "allowed_templates entries include id, name, category, path, version, and enabled plus optional tags/owner/description.",
+    "Paths referenced by enabled entries exist under templates_root.",
+    "This file is referenced only by maintenance workflows (not AGENTS)."
+  ],
+  "usage_steps": [
+    "Use this full registry in workflow templates such as template-registry-check-and-populate.md.",
+    "Update generated_at and entries when templates are added, removed, or changed.",
+    "Keep ids and paths unique across allowed_templates; disable or fix any stale entries."
+  ],
+  "pseudocode_pluscal": "--algorithm RegistryValidation\\nvariables reg, entries, ids, paths, ok in {FALSE, TRUE};\\nbegin\\n  Init:\\n    reg := LoadJSON('<path-to-registry>'); (* Load registry file *)\\n    entries := reg.registry.allowed_templates;\\n    ok := TRUE;\\n\\n  CheckFields:\\n    if reg.name = Nil OR reg.version = Nil OR reg.category = Nil then ok := FALSE; end if;\\n    if Cardinality(entries) = 0 then ok := FALSE; end if;\\n\\n  CheckUniqueness:\\n    ids := [e IN entries |-> e.id]; (* Collect ids *)\\n    paths := [e IN entries |-> e.path]; (* Collect paths *)\\n    (* Assume Unique(seq) is available in tooling context *)\\n    if NOT Unique(ids) OR NOT Unique(paths) then ok := FALSE; end if;\\n\\n  CheckEnabledPaths:\\n    (* For each e in entries where e.enabled = TRUE, verify file exists under templates_root. *)\\n    (* This step is modeled as an assumption validated by tooling. *)\\n\\n  Result:\\n    assert ok = TRUE;\\nend algorithm"
+}

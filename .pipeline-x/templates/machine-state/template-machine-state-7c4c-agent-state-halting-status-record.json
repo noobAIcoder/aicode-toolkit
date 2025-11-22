@@ -1,0 +1,31 @@
+{
+  "name": "Machine State Template for agent_state.json",
+  "description": "Defines the minimal, structured shape for REPO_ROOT/.pipeline-x/states/agent_state.json so HALT updates and approvals are recorded consistently.",
+  "version": "0.1.0",
+  "category": "machine-state",
+  "placeholders": {
+    "state_file": "REPO_ROOT/.pipeline-x/states/agent_state.json",
+    "agent_id": "agent-main",
+    "job_id": "JOB-0000",
+    "stages": [
+      "ingestion",
+      "meta-plan",
+      "planning",
+      "execution",
+      "halted"
+    ]
+  },
+  "steps": [
+    "If agent_state.json does not exist at REPO_ROOT/.pipeline-x/states/agent_state.json, create it as a JSON object.",
+    "Ensure agent_state.json contains keys: agent_id, job_id, current_stage, last_halt_time, last_action, approvals.",
+    "On every HALT, update current_stage to the active workflow stage and last_halt_time to the current ISO-8601 timestamp.",
+    "When an approval gate is reached or resolved, record or update the corresponding entry under approvals keyed by stage (including status, timestamp, and operator identity where available)."
+  ],
+  "acceptance": [
+    "REPO_ROOT/.pipeline-x/states/agent_state.json exists and parses as JSON.",
+    "agent_state.json includes at least the keys agent_id, job_id, current_stage, last_halt_time, last_action, and approvals.",
+    "For each HALT, current_stage and last_halt_time reflect the most recent workflow stage and time the agent stopped.",
+    "Approval decisions at defined gates are captured under approvals with stage, status, and timestamp so later runs can reconstruct prior decisions."
+  ]
+}
+

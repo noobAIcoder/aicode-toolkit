@@ -1,0 +1,34 @@
+{
+  "name": "PLAN / VERIFY Workflow Template",
+  "description": "Closes PLAN stage by validating backlog completion and preparing SPEC handoff.",
+  "version": "0.1.0",
+  "category": "verify",
+  "stage": "PLAN",
+  "subflow": "VERIFY",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "artifact_path": "plans/handoffs/<job_id>-plan-to-spec.md",
+    "todo_tracker": "plans/todos/<job_id>-plan.json"
+  },
+  "inputs": [
+    "job.stage MUST equal PLAN and job.subflow MUST equal VERIFY.",
+    "All guard bits MUST remain TRUE; job.halted MUST be FALSE; lock MUST stay active.",
+    "todo_tracker MUST show current open count (can be >0 until closures are documented).",
+    "PLAN OUT artifact MUST be available for cross-reference."
+  ],
+  "steps": [
+    "Audit todo_tracker; close remaining todos or document why zero open todos is achievable before advance.",
+    "Record acceptance results for INGEST/PROCESS/OUT plus supporting evidence inside artifact_path.",
+    "Draft SPEC handoff payload: intent=SPEC, next_hint=INGEST, include outstanding notes for structure_plan_ok gate.",
+    "Confirm operator approval on the handoff summary and store the confirmation reference."
+  ],
+  "outputs": [
+    "artifact_path containing full PLAN verification log and SPEC handoff instructions.",
+    "todo_tracker updated to zero open items (or explicit HALT rationale if closure failed)."
+  ],
+  "acceptance": [
+    "All PLAN todos MUST be closed before stage advance is requested.",
+    "Handoff record MUST specify from_stage=PLAN, to_stage=SPEC, subflow_completed=VERIFY, next_hint=INGEST.",
+    "Operator approval MUST be attached or linked for audit readability."
+  ]
+}

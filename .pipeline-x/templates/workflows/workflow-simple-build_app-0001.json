@@ -1,0 +1,36 @@
+{
+  "id": "workflow-simple-build_app-0001",
+  "version": "0.1.0",
+  "category": "workflows",
+  "class": "simple",
+  "subclass": "build_app",
+  "description": "Minimal workflow for simple build app tasks",
+  "placeholders": {
+    "task_id": "TASK-0000"
+  },
+  "steps": [
+    {
+      "name": "Plan implementation",
+      "kind": "plan",
+      "input_templates": [
+        ".pipeline-x/templates/AGENTS.md",
+        ".pipeline-x/states/agent_state.json"
+      ],
+      "output_templates": [
+        ".pipeline-x/plans/plan-{task_id}.md"
+      ],
+      "halt_after": true
+    },
+    {
+      "name": "Execute implementation",
+      "kind": "execute",
+      "input_templates": [
+        ".pipeline-x/plans/plan-{task_id}.md"
+      ],
+      "output_templates": [
+        ".pipeline-x/reports/report-{task_id}.json"
+      ],
+      "halt_after": false
+    }
+  ]
+}

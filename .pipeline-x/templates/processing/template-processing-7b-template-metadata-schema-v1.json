@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pipeline-x.template.metadata/1.0",
+  "title": "Pipeline X Template Metadata Schema",
+  "name": "Pipeline X Template Metadata Schema",
+  "description": "Canonical schema for JSON templates stored under .pipeline-x/templates/.",
+  "version": "1.0.0",
+  "category": "processing",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the template."
+    },
+    "description": {
+      "type": "string",
+      "description": "Short explanation of what this template is for."
+    },
+    "version": {
+      "type": "string",
+      "description": "Template version, free-form but SHOULD be semver-compatible."
+    },
+    "category": {
+      "type": "string",
+      "description": "Logical category for this template (e.g., ingestion, meta-plan, planning, processing, output, verify, workflows, machine-state)."
+    },
+    "placeholders": {
+      "type": "object",
+      "description": "Key-value placeholders to customize the template for a specific job.",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "number",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "steps": {
+      "type": "array",
+      "description": "Ordered list of high-level steps this template encodes.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "acceptance": {
+      "type": "array",
+      "description": "Acceptance criteria that MUST hold when the template is successfully applied.",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "version",
+    "category",
+    "steps",
+    "acceptance"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,47 @@
+{
+  "id": "workflow-complicated-build_app-0001",
+  "version": "0.1.0",
+  "category": "workflows",
+  "class": "complicated",
+  "subclass": "build_app",
+  "description": "Workflow for heavier build app tasks",
+  "placeholders": {
+    "task_id": "TASK-0000"
+  },
+  "steps": [
+    {
+      "name": "Deep planning",
+      "kind": "plan",
+      "input_templates": [
+        ".pipeline-x/templates/AGENTS.md",
+        ".pipeline-x/states/agent_state.json"
+      ],
+      "output_templates": [
+        ".pipeline-x/plans/deep-plan-{task_id}.md"
+      ],
+      "halt_after": true
+    },
+    {
+      "name": "Implement milestones",
+      "kind": "execute",
+      "input_templates": [
+        ".pipeline-x/plans/deep-plan-{task_id}.md"
+      ],
+      "output_templates": [
+        ".pipeline-x/reports/progress-{task_id}.json"
+      ],
+      "halt_after": true
+    },
+    {
+      "name": "Summarize outcomes",
+      "kind": "report",
+      "input_templates": [
+        ".pipeline-x/reports/progress-{task_id}.json"
+      ],
+      "output_templates": [
+        ".pipeline-x/reports/final-{task_id}.json"
+      ],
+      "halt_after": false
+    }
+  ]
+}

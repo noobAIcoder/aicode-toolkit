@@ -1,0 +1,33 @@
+{
+  "name": "DELIVER / INGEST Workflow Template",
+  "description": "Admits DELIVER work only when specifications and readiness gates are confirmed.",
+  "version": "0.1.0",
+  "category": "ingestion",
+  "stage": "DELIVER",
+  "subflow": "INGEST",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "artifact_path": "deliver/notes/<job_id>-deliver-ingest.md",
+    "handoff_path": "specs/handoffs/<job_id>-spec-to-deliver.md"
+  },
+  "inputs": [
+    "job.stage MUST equal DELIVER and job.subflow MUST equal INGEST.",
+    "specs_ready MUST be TRUE; guards MUST stay TRUE; job.halted MUST be FALSE.",
+    "Lock MUST be active with job.status=working; tests_pass MUST reset to FALSE on entry.",
+    "SPEC handoff artifact_path MUST exist and include outstanding items for PROCESS."
+  ],
+  "steps": [
+    "Validate specs_ready signal and confirm referenced artifacts are accessible from Windows + WSL.",
+    "Record DELIVER entry rationale, open risks, and gating checklist in artifact_path.",
+    "Enumerate work streams for PROCESS (build, test, docs) and link to owners.",
+    "Document how tests_pass will be evaluated so PROCESS can set it TRUE deterministically."
+  ],
+  "outputs": [
+    "artifact_path capturing DELIVER ingress verification and PROCESS prep notes.",
+    "Updated handoff_path annotated with ingestion status and risk posture."
+  ],
+  "acceptance": [
+    "specs_ready status MUST be logged with timestamp and verifier.",
+    "All DELIVER work streams MUST have owners and success criteria before PROCESS starts.",
+    "Any missing artifacts MUST trigger HALT until resolved."]
+}

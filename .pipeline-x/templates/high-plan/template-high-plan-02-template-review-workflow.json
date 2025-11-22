@@ -1,0 +1,30 @@
+{
+  "name": "Template Review Workflow (Planning)",
+  "description": "High-level plan structure for auditing templates, deduplicating, fixing them, and aligning the registry.",
+  "version": "0.1.0",
+  "category": "planning",
+  "placeholders": {
+    "id": "02",
+    "slug": "template-review-workflow",
+    "title": "Plan: <Your Title Here>",
+    "owner": "Operator"
+  },
+  "inputs": [
+    "Request scope MUST cover listing, deduplication, review/fix, registry update, and gap analysis.",
+    "AGENTS.md rules MUST be read and acknowledged.",
+    "meta-plan for the same effort MUST exist and be approved/acknowledged."
+  ],
+  "steps": [
+    "Inventory all templates (JSON and Markdown) and detect duplicates or mismatches.",
+    "Review each template for internal coherence, placeholders, acceptance, and stage alignment; note fixes.",
+    "Apply minimal fixes and normalization without introducing unnecessary complexity.",
+    "Update the template registry to reflect the real set of templates and schema values.",
+    "Identify missing templates and outline a concrete generation plan.",
+    "Summarize acceptance evidence and HALT for operator review when required."
+  ],
+  "acceptance": [
+    "Plan stored under .pipeline-x/plans/plan-{2-byte-id}-{very-nice-five-word-slug}.md.",
+    "Plan covers inventory, review/fix, registry update, and gap analysis with at least one acceptance check.",
+    "Operator review acknowledged before execution when not running in full-auto mode."
+  ]
+}

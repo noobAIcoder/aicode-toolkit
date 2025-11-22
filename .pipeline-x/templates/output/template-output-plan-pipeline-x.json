@@ -1,0 +1,34 @@
+{
+  "name": "PLAN / OUT Workflow Template",
+  "description": "Packages PLAN PROCESS results into verification-ready artifacts before VERIFY begins.",
+  "version": "0.1.0",
+  "category": "output",
+  "stage": "PLAN",
+  "subflow": "OUT",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "artifact_path": "plans/outputs/<job_id>-plan-out.md",
+    "todo_tracker": "plans/todos/<job_id>-plan.json"
+  },
+  "inputs": [
+    "job.stage MUST equal PLAN and job.subflow MUST equal OUT.",
+    "Lock MUST stay active, job.status MUST be working, job.halted MUST remain FALSE, guards MUST stay TRUE.",
+    "PLAN todo tracker MUST be up to date and include ownership + due hints.",
+    "Operator MUST confirm whether any new risks surfaced after PROCESS." 
+  ],
+  "steps": [
+    "Summarize backlog intent, risk deltas, and gating evidence in artifact_path.",
+    "Snapshot todo status (open/closed) and link to supporting docs so VERIFY can audit quickly.",
+    "Document acceptance evidence for INGEST + PROCESS outputs, citing filenames and timestamps.",
+    "List outstanding clarifications that VERIFY MUST close or explicitly accept as risk." 
+  ],
+  "outputs": [
+    "artifact_path containing PLAN summary, backlog snapshot, and evidence list.",
+    "Updated todo_tracker status values reflecting any last-minute adjustments." 
+  ],
+  "acceptance": [
+    "Artifact MUST state whether each ingress/process objective passed or needs VERIFY attention.",
+    "Outstanding todo count MUST be present so VERIFY knows closure effort.",
+    "Evidence list MUST cite storage paths accessible from Windows and WSL." 
+  ]
+}

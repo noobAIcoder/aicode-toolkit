@@ -1,0 +1,34 @@
+{
+  "name": "DELIVER / OUT Workflow Template",
+  "description": "Packages tested deliverables and supporting evidence for VERIFY and release approvals.",
+  "version": "0.1.0",
+  "category": "output",
+  "stage": "DELIVER",
+  "subflow": "OUT",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "artifact_path": "deliver/outputs/<job_id>-deliver-out.md",
+    "test_log": "deliver/tests/<job_id>-results.md"
+  },
+  "inputs": [
+    "job.stage MUST equal DELIVER and job.subflow MUST equal OUT.",
+    "tests_pass MUST already be TRUE from PROCESS.",
+    "Guards MUST hold, job.halted MUST be FALSE, lock MUST remain active.",
+    "Operator MUST specify release packaging format (docs, binaries, specs)."
+  ],
+  "steps": [
+    "Summarize deliverables, version hashes, and storage paths inside artifact_path.",
+    "Link each deliverable to evidence in test_log plus any additional documents.",
+    "Document outstanding release blockers and map them to approvals required during VERIFY.",
+    "Confirm packaging works on Windows and WSL paths, adjusting instructions if needed."
+  ],
+  "outputs": [
+    "artifact_path enumerating deliverables, evidence, and release blockers.",
+    "Updated manifest listing how to reproduce builds/tests." 
+  ],
+  "acceptance": [
+    "Every deliverable MUST reference a verification artifact or log entry.",
+    "Outstanding blockers MUST include owner, mitigation, and due expectation.",
+    "Packaging instructions MUST be reproducible on Windows and WSL." 
+  ]
+}

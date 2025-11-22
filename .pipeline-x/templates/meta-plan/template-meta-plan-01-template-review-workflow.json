@@ -1,0 +1,32 @@
+{
+  "name": "Template Review meta-plan",
+  "description": "Minimal meta-plan structure for reviewing templates and registry alignment.",
+  "version": "0.1.0",
+  "category": "meta-plan",
+  "placeholders": {
+    "id": "01",
+    "slug": "template-review-workflow",
+    "title": "meta-plan: <Your Title Here>",
+    "owner": "Operator"
+  },
+  "workstreams": [
+    "Clarify goals, constraints, and success criteria for template review.",
+    "Inventory existing templates and surfaces where they are consumed.",
+    "Identify dependencies (registry, workflows, approval points) and required inputs.",
+    "List unknowns and operator questions blocking planning or execution.",
+    "Define acceptance checks to determine meta-plan completeness."
+  ],
+  "acceptance": [
+    "meta-plan outlines workstreams, dependencies, and unknowns specific to the request.",
+    "Placeholders are replaced and saved under plans/plan-{2-byte-id}-{very-nice-five-word-slug}.md.",
+    "Operator review is requested and recorded before proceeding to planning."
+  ],
+  "usage_steps": [
+    "Copy this template when preparing a meta-plan for template reviews or registry work.",
+    "Fill placeholders (id, slug, title, owner) to match the current effort.",
+    "Draft the meta-plan using the workstreams and acceptance checks above.",
+    "Store the meta-plan under .pipeline-x/plans/plan-{2-byte-id}-{very-nice-five-word-slug}.md.",
+    "Request operator approval before moving on to detailed planning."
+  ],
+  "pseudocode_pluscal": "--algorithm MetaPlanReview\\nvariables metaPlan, workstreams, deps, unknowns, ok in {FALSE, TRUE};\\nbegin\\n  Init:\\n    metaPlan.title := \"<set in plan>\"; (* Title provided by operator *)\\n    workstreams := {};\\n    deps := {};\\n    unknowns := {};\\n    ok := TRUE;\\n\\n  DefineWorkstreams:\\n    workstreams := {\\\"inventory\\\", \\\"dependencies\\\", \\\"unknowns\\\", \\\"acceptance\\\"}; (* Ensure core tracks are present *)\\n\\n  CaptureDependencies:\\n    deps := CollectDependencies(metaPlan); (* List registry updates, approvals, inputs *)\\n    if Cardinality(deps) = 0 then ok := FALSE; end if;\\n\\n  CaptureUnknowns:\\n    unknowns := CollectQuestions(metaPlan); (* Record blocking questions for operator *)\\n    if Cardinality(unknowns) = 0 then ok := FALSE; end if;\\n\\n  CheckAcceptance:\\n    if NOT Contains(metaPlan, workstreams) then ok := FALSE; end if;\\n\\n  Result:\\n    assert ok = TRUE; (* meta-plan ready for operator review *)\\nend algorithm"
+}

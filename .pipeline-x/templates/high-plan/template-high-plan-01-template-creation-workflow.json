@@ -1,0 +1,25 @@
+{
+  "name": "Template Creation Workflow (Planning Draft)",
+  "description": "Minimal template to capture a repeatable plan for creating and validating templates.",
+  "version": "0.1.0",
+  "category": "planning",
+  "placeholders": {
+    "id": "01",
+    "slug": "template-creation-workflow",
+    "title": "Plan: <Your Title Here>",
+    "owner": "Operator"
+  },
+  "steps": [
+    "Deconstruct the request and execute the work.",
+    "Write a brief plan to .pipeline-x/plans/plan-{2-byte-id}-{very-nice-five-word-slug}.md using the current request context.",
+    "Identify repeatable inputs, steps, and acceptance; define placeholders.",
+    "Draft a minimal JSON template with required fields.",
+    "Save to .pipeline-x/templates/high-plan/template-high-plan-{id}-{slug}.json.",
+    "HALT for operator review and approval."
+  ],
+  "acceptance": [
+    "Plan exists under .pipeline-x/plans/ with correct naming.",
+    "Template JSON exists under .pipeline-x/templates/high-plan/ with correct naming and fields.",
+    "Operator review completed before promotion."
+  ]
+}

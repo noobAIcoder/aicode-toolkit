@@ -1,0 +1,34 @@
+{
+  "name": "SPEC / VERIFY Workflow Template",
+  "description": "Confirms SPEC completeness, secures approvals, and prepares DELIVER handoff.",
+  "version": "0.1.0",
+  "category": "verify",
+  "stage": "SPEC",
+  "subflow": "VERIFY",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "artifact_path": "specs/handoffs/<job_id>-spec-to-deliver.md",
+    "approval_log": "specs/approvals/<job_id>-plan-approval.md"
+  },
+  "inputs": [
+    "job.stage MUST equal SPEC and job.subflow MUST equal VERIFY.",
+    "SPEC OUT package MUST be available with links to all artifacts.",
+    "Guards MUST remain TRUE, job.halted MUST be FALSE, lock MUST be active.",
+    "Plan approval gate MAY still be pending but MUST be tracked in approval_log."
+  ],
+  "steps": [
+    "Audit SPEC deliverables against ingress requirements; document gaps in artifact_path.",
+    "Capture plan_approved status (TRUE/FALSE) and note any blockers to DELIVER entry.",
+    "Prepare DELIVER handoff payload (from_stage=SPEC, to_stage=DELIVER, subflow_completed=VERIFY, next_hint=INGEST) including outstanding tests/spec readiness signals.",
+    "Obtain operator acknowledgment that SPEC scope is frozen and ready for DELIVER." 
+  ],
+  "outputs": [
+    "artifact_path summarizing verification evidence, approvals, and DELIVER instructions.",
+    "approval_log updated with decision makers, timestamps, and gating outcomes." 
+  ],
+  "acceptance": [
+    "Every SPEC deliverable MUST be marked accepted, deferred, or blocked with owner + date.",
+    "Plan approval status MUST be explicit; if FALSE, exit criteria MUST describe remediation path.",
+    "Handoff payload MUST include references to tests/spec readiness signals expected by DELIVER INGEST." 
+  ]
+}

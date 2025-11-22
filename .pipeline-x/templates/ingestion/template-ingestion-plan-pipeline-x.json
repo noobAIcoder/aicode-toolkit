@@ -1,0 +1,34 @@
+{
+  "name": "PLAN / INGEST Workflow Template",
+  "description": "Guides PLAN stage ingress work: validate scope, guards, and readiness before moving to PROCESS.",
+  "version": "0.1.0",
+  "category": "ingestion",
+  "stage": "PLAN",
+  "subflow": "INGEST",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "artifact_path": "plans/notes/<job_id>-plan-ingest.md",
+    "owner": "Operator"
+  },
+  "inputs": [
+    "job.stage MUST equal PLAN and job.subflow MUST equal INGEST before any action is taken.",
+    "Guards compliance/registry/drift MUST all be TRUE; scope_ok and idea_ok MUST both be TRUE per workflow state.",
+    "Lock MUST be active and job.status MUST be working; job.halted MUST be FALSE.",
+    "Operator MUST provide latest scope statement and idea brief for cross-checking."
+  ],
+  "steps": [
+    "Confirm lock ownership, guard bits, and readiness signals; HALT if any precondition is FALSE.",
+    "Review operator scope statement and idea brief; document confirmation or deltas in <artifact_path>.",
+    "Identify gaps or assumptions that MUST be tracked for PLAN/PROCESS follow-up and log them against job_id.",
+    "Record transition readiness so PROCESS can proceed without re-validating the same inputs."
+  ],
+  "outputs": [
+    "Signed-off scope validation notes stored at <artifact_path>.",
+    "List of explicit follow-ups for PLAN/PROCESS, referencing job_id and timestamps."
+  ],
+  "acceptance": [
+    "All PLAN ingress gates MUST be recorded with pass/fail evidence in <artifact_path>.",
+    "Follow-up list MUST exist; PROCESS MUST reference it before generating todos.",
+    "Handoff log MUST confirm stage stays in PLAN and subflow will advance to PROCESS."
+  ]
+}

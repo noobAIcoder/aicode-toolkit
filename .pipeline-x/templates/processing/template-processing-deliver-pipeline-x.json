@@ -1,0 +1,34 @@
+{
+  "name": "DELIVER / PROCESS Workflow Template",
+  "description": "Executes delivery work, runs tests, and sets tests_pass TRUE when criteria are met.",
+  "version": "0.1.0",
+  "category": "processing",
+  "stage": "DELIVER",
+  "subflow": "PROCESS",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "test_log": "deliver/tests/<job_id>-results.md",
+    "build_path": "src/"
+  },
+  "inputs": [
+    "job.stage MUST equal DELIVER and job.subflow MUST equal PROCESS.",
+    "Guards MUST remain TRUE; job.halted MUST be FALSE; lock MUST be active; tests_pass MUST currently be FALSE.",
+    "DELIVER INGEST notes MUST outline work streams and owners.",
+    "Operator MUST confirm tooling + environments (Windows + WSL) are configured." 
+  ],
+  "steps": [
+    "Execute build/test tasks per spec; capture commands, environments, and outputs in test_log.",
+    "Record PlusCal-like pseudocode references (if any) inline with docs; no other pseudocode formats are allowed.",
+    "Set tests_pass TRUE only after all required tests pass and evidence is stored in test_log.",
+    "Update build_path or deliverables with version/timestamp information for OUT stage." 
+  ],
+  "outputs": [
+    "test_log describing executed tests, environments, and pass/fail status.",
+    "Updated deliverables under build_path ready for packaging." 
+  ],
+  "acceptance": [
+    "All mandatory tests MUST be executed on Windows/WSL as applicable.",
+    "Evidence MUST show commands, timestamps, and outcomes for each test case.",
+    "tests_pass MUST equal TRUE before advancing to OUT." 
+  ]
+}

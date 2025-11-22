@@ -1,0 +1,46 @@
+{
+  "id": "workflow-complicated-off_task-0001",
+  "version": "0.1.0",
+  "category": "workflows",
+  "class": "complicated",
+  "subclass": "off_task",
+  "description": "Workflow for tricky off-task escalations",
+  "placeholders": {
+    "task_id": "TASK-0000"
+  },
+  "steps": [
+    {
+      "name": "Investigate request",
+      "kind": "plan",
+      "input_templates": [
+        ".pipeline-x/templates/AGENTS.md"
+      ],
+      "output_templates": [
+        ".pipeline-x/plans/investigation-{task_id}.md"
+      ],
+      "halt_after": true
+    },
+    {
+      "name": "Address issue",
+      "kind": "execute",
+      "input_templates": [
+        ".pipeline-x/plans/investigation-{task_id}.md"
+      ],
+      "output_templates": [
+        ".pipeline-x/reports/offtask-{task_id}.json"
+      ],
+      "halt_after": true
+    },
+    {
+      "name": "Document follow-up",
+      "kind": "report",
+      "input_templates": [
+        ".pipeline-x/reports/offtask-{task_id}.json"
+      ],
+      "output_templates": [
+        ".pipeline-x/reports/followup-{task_id}.json"
+      ],
+      "halt_after": false
+    }
+  ]
+}

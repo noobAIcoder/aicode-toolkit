@@ -1,0 +1,34 @@
+{
+  "name": "PLAN / PROCESS Workflow Template",
+  "description": "Creates the minimal actionable todo backlog for PLAN stage once ingress gates pass.",
+  "version": "0.1.0",
+  "category": "processing",
+  "stage": "PLAN",
+  "subflow": "PROCESS",
+  "placeholders": {
+    "job_id": "JOB-0000",
+    "todo_tracker": "plans/todos/<job_id>-plan.json",
+    "owner": "Operator"
+  },
+  "inputs": [
+    "job.stage MUST equal PLAN and job.subflow MUST equal PROCESS.",
+    "Guard bits MUST remain TRUE, job.halted MUST be FALSE, and lock MUST remain active with job.status=working.",
+    "PLAN/INGEST output (scope validation + follow-up list) MUST be available.",
+    "Operator MUST state priority focus areas so todos can be scoped."
+  ],
+  "steps": [
+    "Load PLAN/INGEST follow-ups and consolidate duplicates.",
+    "Draft exactly five trackable todos that cover scope clarification, dependency capture, artifact drafting, review scheduling, and verification prep; log them in todo_tracker.",
+    "Tag each todo with owner, due hint, and blocking signals so closure criteria is explicit.",
+    "Confirm backlog with operator and document approval status in todo_tracker before advancing to OUT."
+  ],
+  "outputs": [
+    "todo_tracker populated with five actionable todos tied to job_id.",
+    "Operator acknowledgement recorded next to backlog entries."
+  ],
+  "acceptance": [
+    "Backlog MUST list five todos with clear closure criteria and owners.",
+    "Todos MUST reference PLAN scope artifacts and cite dependencies.",
+    "Operator MUST confirm backlog completeness before OUT work begins."
+  ]
+}
